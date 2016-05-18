@@ -1,0 +1,66 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #2b2b2b;
+    padding-top: 60px;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.pageLoading {
+    border: 1px solid #cccccc;
+    margin: 10px;
+    padding: 10px;
+    background: #eaf6ff;
+    border-radius: 10px;
+    line-height: 2.25em;
+    font-size: 1.4em;
+}
+
+
+.levelOne {
+            background-color: #006DCC;
+            color: white;
+}
+
+.action {
+    cursor: pointer;
+}
+
+.status-panel {
+    height:300px;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.wrapword{
+white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+white-space: -pre-wrap;      /* Opera 4-6 */
+white-space: -o-pre-wrap;    /* Opera 7 */
+white-space: pre-wrap;       /* css-3 */
+word-wrap: break-word;       /* Internet Explorer 5.5+ */
+white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+word-break: break-all;
+white-space: normal;
+
+}
+.tooltip.customTooltip .tooltip-inner {
+                color: #FFF;
+                background-color: #000;
+                box-shadow: 0 6px 12px rgba(0,0,0,.3);
+                border-color: black;
+                border-width: 2px;
+            }
+
+.tooltipBg {
+    color:white;
+}

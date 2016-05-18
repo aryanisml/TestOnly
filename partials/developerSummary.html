@@ -1,0 +1,443 @@
+﻿<div id="developerSummary" class="container-fluid" >
+
+    <div class="panel panel-default">
+            <div class="panel-heading">
+                <table class="table table-condensed">
+
+                    <thead>
+                    
+                        <tr class="active env-normal">
+                            <th style="min-width:100px">
+                            <h4>
+                                <span> {{group.Name}} </span>
+                            </h4>
+                            <div class="more-info">(overall status)</div>
+                                
+                            </th>
+                            <th>
+                                Code Quality
+                                <div class="more-info">(% files under toxicity limit)</div>                            
+
+                            </th>
+                            <th>
+                                Unit Testing
+                                <div class="more-info">(% passed)</div>
+
+                            </th>
+                            <th>
+                                Code Coverage
+                                <div class="more-info">(% lines covered)</div>                            
+                            </th>
+                            <th colspan="3">
+                                Deploy
+                                <div class="more-info">(% successful deployment)</div>
+                            </th >
+
+                            <th>
+                            Predictability Score
+                            <div class="more-info">(% of completed/committed stories)</div>                                
+                            </th>
+                            <th>
+                            Defects
+                            <div class="more-info">(outstanding)</div>
+                            </th>
+                            <th colspan="3">
+                            Auto. testing 
+                                <div class="more-info">(% passed)</div>
+                            </th>
+                            <th colspan="3">
+                            Monitoring
+                                <div class="more-info">(overall performance)</div>
+                            </th>
+
+                        </tr>
+
+                          <tr class="active env-normal">
+                            <th style="min-width:100px">
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                            Dev
+                            </th>
+                            <th>
+                            QA
+                            </th>
+                            <th>
+                            Prod
+                            </th>
+                            <th>
+                            </th>
+                            <th>                            
+                            </th>
+                            <th>Dev</th>
+                            <th>QA</th>
+                            <th>Prod</th>
+                            <th>Dev</th>
+                            <th>QA</th>
+                            <th>Prod</th>
+                        </tr>
+                    </thead>
+
+
+                
+                    <tbody>
+
+                        <tr>
+                            <td style="min-width:100px"> 
+                            
+                                <a href="#" tooltip-placement="top" tooltip="0-75 (Red), 76-85 (Yellow), 86-100 (Green)" tooltip-class="customTooltip">
+                                   <div class="project-info-content">
+                                        <div class="project-info-content-header-square project-info-content-header-{{group.OverallStatus}}">
+                                        {{group.Overall | number : 0}}%  
+                                        </div>
+                                    </div>                                                                                                                                              
+                                </a>                  
+                            </td>
+                        
+                            <td>
+                                <a href="#" tooltip-placement="top" tooltip="0-79 (Red), 80-89 (Yellow), 90-100 (Green)" tooltip-class="customTooltip">
+                                    <div class="comp-status">
+                                        <div class="comp-status-content comp-status-content-{{group.CodeQualityStatus}}">
+                                            {{group.CodeQuality | number : 0}}% 
+                                        </div>
+                                        <div class="comp-status-footer comp-status-footer-{{group.CodeQualityStatus}}">
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+
+                            <td>
+                                <a href="#" tooltip-placement="top" tooltip="0-99 (Red), 100 (Green)" tooltip-class="customTooltip">
+                                    <div class="comp-status">
+                                        <div class="comp-status-content comp-status-content-{{group.UnitTestingStatus}}">
+                                            {{group.UnitTesting | number : 0}}% 
+                                        </div>
+                                        <div class="comp-status-footer comp-status-footer-{{group.UnitTestingStatus}}">
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" tooltip-placement="top" tooltip="0-49 (Red), 50-69 (Yellow), 70-100 (Green)" tooltip-class="customTooltip">
+                                    <div class="comp-status">
+                                        <div class="comp-status-content comp-status-content-{{group.CodeCoverageStatus}}">
+                                            {{group.CodeCoverage | number : 0}}% 
+                                        </div>
+                                        <div class="comp-status-footer comp-status-footer-{{group.CodeCoverageStatus}}">
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+
+                            <td>
+                            <a href="#" tooltip-placement="top" tooltip="0-99(Red), 100 (Green)" tooltip-class="customTooltip">
+                                <div class="comp-status">
+                                    <div class="comp-status-content comp-status-content-{{group.Deploy.DevStatus}}">
+                                        {{group.Deploy.Dev | number : 0}}%
+                                    </div>
+                                    <div class="comp-status-footer comp-status-footer-{{group.Deploy.DevStatus}}">
+									
+                                    </div>
+                                </div>
+                            </a>
+                            </td>
+
+                            <td>
+                            <a href="#" tooltip-placement="top" tooltip="0-99(Red), 100 (Green)" tooltip-class="customTooltip">
+                            
+                                                    <div class="comp-status">
+                                    <div class="comp-status-content comp-status-content-{{group.Deploy.QAStatus}}">
+                                        {{group.Deploy.QA | number : 0}}%
+                                    </div>
+                                    <div class="comp-status-footer comp-status-footer-{{group.Deploy.QAStatus}}">
+                                    </div>
+                                </div>
+                            </a>
+                            </td>
+
+                            <td>
+                            <a href="#" tooltip-placement="top" tooltip="0-99(Red), 100 (Green)" tooltip-class="customTooltip">
+
+                                <div class="comp-status">
+                                    <div class="comp-status-content comp-status-content-{{group.Deploy.ProductionStatus}}">
+                                        {{group.Deploy.Production | number : 0}}%
+                                    </div>
+                                    <div class="comp-status-footer comp-status-footer-{{group.Deploy.ProductionStatus}}">
+                                    </div>
+                                </div>
+                               </a>                                                   
+                            </td>
+                            
+                            <td>                            
+                                <div class="project-info-content">
+                                    <div class="project-info-content-header-square project-info-content-header-{{group.PredictabilityScoreStatus}}">
+                                    {{group.PredictabilityScore | number : 0}}%
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                            <a href="#" tooltip-placement="top" tooltip=">20 (Red), 10-20 (Yellow), 0-10 (Green)" tooltip-class="customTooltip">
+                          
+                               <div class="project-info-content">
+
+                                    <div class="project-info-content-header-square project-info-content-header-{{group.DefectsStatus}}">
+                                    {{group.Defects}}
+                                    </div>
+                                </div>
+                                </a>
+                            </td>
+
+                            <td>
+                               <div class="project-info-content">
+                                    <div class="project-info-content-header-square project-info-content-header-{{group.AutomatedTesting.DevStatus}}">
+                                    {{group.AutomatedTesting.Dev | number : 0}}%
+                                    </div>
+                                </div>                                                        
+                            </td>
+                            <td>
+                               <div class="project-info-content">
+                                    <div class="project-info-content-header-square project-info-content-header-{{group.AutomatedTesting.QAStatus}}">
+                                    {{group.AutomatedTesting.QA | number : 0}}%
+                                    </div>
+                                </div>                                                                                                               
+                            </td>
+                            <td>
+                               <div class="project-info-content">
+                                    <div class="project-info-content-header-square project-info-content-header-{{group.AutomatedTesting.ProductionStatus}}">
+                                    {{group.AutomatedTesting.Production | number : 0}}%
+                                    </div>
+                                </div>                                                                                                               
+                            </td>
+
+                            <td>
+                               <div class="project-info-content">
+                                    <div class="project-info-content-header-square project-info-content-header-{{group.Monitor.Dev}} monitor-overall-text-{{group.Monitor.Dev}}">
+                                    
+                                    </div>
+                                </div>                                                                                                               
+                            </td>
+                            <td>
+                               <div class="project-info-content">
+                                    <div class="project-info-content-header-square project-info-content-header-{{group.Monitor.QA}} monitor-overall-text-{{group.Monitor.QA}}">
+                                    
+                                    </div>
+                                </div>                                                                                                               
+                            </td>
+
+                            <td>
+                               <div class="project-info-content">
+                                    <div class="project-info-content-header-square project-info-content-header-{{group.Monitor.Production}} monitor-overall-text-{{group.Monitor.Production}}">
+                                    
+                                    </div>
+                                </div>                                                                                                               
+                            </td>
+                        </tr>
+                    
+                    </tbody>
+
+             </table>                
+            </div>
+
+            <div class="panel-body">
+            
+            <div class="box box-solid">
+
+                <table class="table table-condensed">
+
+                    <thead>
+                        <tr class="active env-normal">
+                            <td >Components</td>
+                            <td>Code Quality
+                                <div class="more-info">(% files under toxicity limit)</div>                            
+
+                            </td>
+                            <td>Unit Testing
+                                <div class="more-info">(% passed)</div>
+                            </td>
+                            <td>Code Coverage
+                                <div class="more-info">(% lines covered)</div>                            
+                            </td>
+                            <td>Deploy - Dev
+                                <div class="more-info">(deployment status)</div>
+                            </td>
+                            <td>Deploy - QA
+                                <div class="more-info">(deployment status)</div>
+                            </td>
+                            <td>Deploy - Prod
+                                <div class="more-info">(deployment status)</div>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-ng-repeat="component in group.Components">
+
+                        <td style="text-align:left">
+
+                            <span> <strong> <a data-ng-href="#/{{group.Name}}/component/{{component.Name}}">{{ component.Name }}</a>    </strong>
+                                <span class="label bg-navy"> {{component.BuildNumber}} </span> </span>
+                                <div style="margin-left:20px" >{{ component.BuildTime }} </div>
+                        </td>
+
+                        <td>
+                            <a href="{{component.CodeQualityLinkToLogFile}}" target="_blank" tooltip-placement="top" tooltip="0-79 (Red), 80-89 (Yellow), 90-100 (Green)" tooltip-class="customTooltip">
+
+                            <div class="comp-status-sm comp-status-sm-{{component.CodeQualityStatus}}">
+                                <div class="comp-status-content comp-status-content-{{component.CodeQualityStatus}}">
+                                    {{component.CodeQuality | number : 0}}%
+                                </div>
+                                <div class="comp-status-footer comp-status-footer-{{component.CodeQualityStatus}}">
+                                </div>
+                            </div>
+                                </a>
+                        </td>
+
+                        <td>
+                            <a href="{{component.UnitTestingLinkToLogFile}}" target="_blank" tooltip-placement="top" tooltip="0-99 (Red), 100 (Green)" tooltip-class="customTooltip">
+
+                            <div class="comp-status-sm comp-status-sm-{{component.UnitTestingStatus}}">
+                                <div class="comp-status-content comp-status-content-{{component.UnitTestingStatus}}">
+                                    {{component.UnitTesting | number : 0}}%
+                                </div>
+                                <div class="comp-status-footer comp-status-footer-{{component.UnitTestingStatus}}">
+                                </div>
+                            </div>
+                                </a>
+                        </td>
+                        <td>
+                            <a href="{{component.CodeCoverageLinkToLogFile}}" target="_blank" tooltip-placement="top" tooltip="0-49 (Red), 50-69 (Yellow), 70-100 (Green)" tooltip-class="customTooltip">
+
+                            <div class="comp-status-sm comp-status-sm-{{component.CodeCoverageStatus}}">
+                                <div class="comp-status-content comp-status-content-{{component.CodeCoverageStatus}}">
+                                    {{component.CodeCoverage | number : 0}}%
+                                </div>
+                                <div class="comp-status-footer comp-status-footer-{{component.CodeCoverageStatus}}">
+                                </div>
+                            </div>
+                                </a>
+                        </td>
+                        <td>
+                            <span class="badge-square bg-{{component.Deploy.DevStatus}}">&nbsp;</span> 
+                            <span class="deploy-component-text-{{component.Deploy.DevStatus}}"> </span>
+                            <div data-ng-if="component.Deploy.DevStatus" class="label bg-navy"> {{component.Deploy.DevVersionNumber}} </div>
+                             <div data-ng-if="component.Deploy.DevStatus" class="more-info"> {{component.Deploy.DevTime}} </div>
+                        </td>
+
+                        <td>
+                            <span class="badge-square bg-{{component.Deploy.QAStatus}}">&nbsp;</span> 
+                            <span  class="deploy-component-text-{{component.Deploy.QAStatus}}">  </span>                                                        
+                            <div data-ng-if="component.Deploy.QAStatus" class="label bg-navy"> {{component.Deploy.QAVersionNumber}} </div>
+                             <div data-ng-if="component.Deploy.QAStatus" class="more-info"> {{component.Deploy.QATime}} </div>
+                        </td>
+                        <td>
+                            <span class="badge-square bg-{{component.Deploy.ProductionStatus}}">&nbsp;</span> 
+                            <span class="deploy-component-text-{{component.Deploy.ProductionStatus}}"> </span>
+                            <div data-ng-if="component.Deploy.ProductionStatus" class="label bg-navy"> {{component.Deploy.ProductionVersionNumber}} </div>
+                            <div data-ng-if="component.Deploy.ProductionStatus"  class="more-info"> {{component.Deploy.ProductionTime}} </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+                </table>
+
+                <table class="table table-condensed ">
+
+                    <thead>
+                        <tr class="active env-normal" >
+                            <td >Projects</td>
+                            <td>Predictability Score
+                            <div class="more-info">(% of completed/committed stories)</div>                                
+                            </td>
+                            <td>No. Of Defects
+                            <div class="more-info">(outstanding)</div>
+                            </td>
+                            <td>Auto. Testing - Dev
+                                <div class="more-info">(% successful deployment)</div>
+                            </td>
+                            <td>Auto. Testing - QA
+                                <div class="more-info">(% successful deployment)</div>
+                            </td>
+                            <td>Auto. Testing - Prod
+                                <div class="more-info">(% successful deployment)</div>
+                            </td>
+                            <td>Monitoring - Dev
+                                <div class="more-info">(overall performance)</div>
+                            </td>
+                            <td>Monitoring - QA
+                                <div class="more-info">(overall performance)</div>
+                            </td>
+                            <td>Monitoring - Prod
+                                <div class="more-info">(overall performance)</div>
+                            </td>
+                        </tr>
+
+                        <tr data-ng-repeat="project in group.Projects">
+                            <td style="text-align:left"> <strong>{{project.Name}}</strong> </td>
+                            <td>
+                                <span class="badge-square bg-{{project.PredictabilityScoreStatus}}">&nbsp;</span> 
+                                <span class="fg-{{project.PredictabilityScoreStatus}}">  {{project.PredictabilityScore | number : 0}}%  </span>
+                                <div data-ng-if="project.PredictabilityScoreStatus != null" class="more-info"> {{project.PredictabilityScoreTime}}  </div>
+                            
+                            </td>
+                            <td>
+
+                            <a href="#" tooltip-placement="top" tooltip=">20 (Red), 10-20 (Yellow), 0-10 (Green)" tooltip-class="customTooltip">
+
+                                <span class="badge-square bg-{{project.DefectsStatus}}">&nbsp;</span> 
+                                <span class="fg-{{project.DefectsStatus}}"> {{project.Defects}} </span>                                                                                     
+                                <div data-ng-if="project.DefectsStatus != null" class="more-info"> {{project.DefectsTime}}  </div>                            
+                            </a>
+
+                            </td>
+                            <td>                          
+                                <div>
+                                    <span class="badge-square bg-{{project.autoTesting.DevStatus}}">&nbsp;</span> 
+                                    <span class="fg-{{project.autoTesting.DevStatus}}">  {{project.autoTesting.Dev | number : 0}}% </span>
+                                </div>
+                                <div data-ng-if="project.autoTesting.DevStatus != null" class="more-info"> {{project.autoTesting.DevTime}}  </div>
+
+                            </td>
+                            <td>
+                                <div>
+                                    <span class="badge-square bg-{{project.autoTesting.QAStatus}}">&nbsp;</span> 
+                                    <span class="fg-{{project.autoTesting.QAStatus}}">  {{project.autoTesting.QA | number : 0}}% </span>
+                                </div>
+                                <div data-ng-if="project.autoTesting.QAStatus != null" class="more-info"> {{project.autoTesting.QATime}}  </div>
+
+                            </td>
+                            <td>
+                                <div>
+                                    <span class="badge-square bg-{{project.autoTesting.ProductionStatus}}">&nbsp;</span> 
+                                    <span class="fg-{{project.autoTesting.ProductionStatus}}">  {{project.autoTesting.Production | number : 0}}% </span>
+                                </div>
+                                <div data-ng-if="project.autoTesting.ProductionStatus != null" class="more-info"> {{project.autoTesting.ProductionTime}}  </div>
+                            </td>
+                            <td>
+                                <span class="badge-square bg-{{project.monitor.Dev}}">&nbsp;</span> <span class="status-text-{{project.monitor.Dev}}"> </span>                         
+                                <div data-ng-if="project.monitor.Dev != null" class="more-info"> {{ project.monitor.DevTime }} </div>
+                            </td>
+                            <td>
+                                <span class="badge-square bg-{{project.monitor.QA}}">&nbsp;</span> <span class="status-text-{{project.monitor.QA}}">  </span>
+                                <div  data-ng-if="project.monitor.QA != null" class="more-info"> {{ project.monitor.QATime }} </div>
+
+                            </td>
+                            <td>
+                                <span class="badge-square bg-{{project.monitor.Production}}">&nbsp;</span> <span class="status-text-{{project.monitor.Production}}"> </span>
+                                <div  data-ng-if="project.monitor.Production != null" class="more-info">  {{ project.monitor.ProductionTime }}   </div>
+                            </td>
+                        
+                        </tr>
+
+                    </thead>
+                </table>
+            </div>
+            </div>
+
+        </div>
+
+    
+</div>

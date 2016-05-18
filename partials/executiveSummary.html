@@ -1,0 +1,234 @@
+﻿<div id="executiveSumaryWrapper">
+    <div data-ng-repeat="group in productsInfo.Groups" class="group-visible group-visible-{{group.IsVisible}}">
+
+        <div class="row" >
+            <div class="col-lg-6 col-md-6">
+                <div class="box box-solid">
+                
+                <div class="box-header"><h3 class="box-title"> 
+                    <a ng-href="#/summary/{{group.ProductGroup[0].Name}}"> {{group.ProductGroup[0].Name}} </a> 
+
+                                        </h3>
+                </div>
+                <div class="box-body">
+                    
+                            <div class="pull-left" >
+                            <div  do-am-doughnut-chart id="doughnut-chart-cm-{{$index}}" class="doughnut-chart" fill-percent="{{group.ProductGroup[0].OverallStatus}}" data-is-visible="{{group.IsVisible}}"></div>                            
+                            <div class="overall-status-text">Overall Status</div>
+                            </div>
+                            <div class="pull-right">
+                                <div do-am-column-chart id="column-chart-cm-{{$index}}" class="column-chart" data-ng-model="group.ProductGroup[0]" data-is-visible="{{group.IsVisible}}"  ></div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+               <div class="box box-solid">
+                
+                <div class="box-header"><h3 class="box-title">
+                    <a ng-href="#/summary/{{group.ProductGroup[1].Name}}">{{group.ProductGroup[1].Name}} </a> 
+                                        </h3>
+                </div>
+                <div class="box-body">
+                            <div class="pull-left" >
+                            
+                            <div  do-am-doughnut-chart id="doughnut-chart-ai-{{$index}}" class="doughnut-chart" fill-percent="{{group.ProductGroup[1].OverallStatus}}" data-is-visible="{{group.IsVisible}}"></div>                            
+                            <div class="overall-status-text">Overall Status</div>
+
+                            
+                            </div>
+                            <div class="pull-right">
+                                <div do-am-column-chart id="column-chart-ai-{{$index}}" class="column-chart"  data-ng-model="group.ProductGroup[1]" data-is-visible="{{group.IsVisible}}" ></div>
+                                
+
+                            </div>
+
+                            <div class="clearfix"></div>
+                    
+                </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="box box-solid">
+                
+                <div class="box-header">
+                    <h3 class="box-title">
+                        <a ng-href="#/summary/{{group.ProductGroup[2].Name}}"> {{group.ProductGroup[2].Name}} </a> 
+                    </h3>
+                </div>
+                <div class="box-body">                            
+                <div class="pull-left" >
+                            <div  do-am-doughnut-chart id="doughnut-chart-ort-{{$index}}" class="doughnut-chart" fill-percent="{{group.ProductGroup[2].OverallStatus}}" data-is-visible="{{group.IsVisible}}"></div>                            
+                            <div class="overall-status-text">Overall Status</div>
+                            
+                            </div>
+                <div class="pull-right">
+                                <div do-am-column-chart id="column-chart-ort-{{$index}}" class="column-chart" data-ng-model="group.ProductGroup[2]" data-is-visible="{{group.IsVisible}}"  ></div>
+                                
+                                
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+               <div class="box box-solid">
+                
+                <div class="box-header"><h3 class="box-title">
+                    <a ng-href="#/summary/{{group.ProductGroup[3].Name}} "> {{group.ProductGroup[3].Name}}  </a> 
+                                        </h3>
+                </div>
+                <div class="box-body">
+                            <div class="pull-left" >
+                            <div  do-am-doughnut-chart id="doughnut-chart-rc-{{$index}}" class="doughnut-chart" fill-percent="{{group.ProductGroup[3].OverallStatus}}" data-is-visible="{{group.IsVisible}}"></div>                            
+                            <div class="overall-status-text">Overall Status</div>
+                            
+                            </div>
+                            <div class="pull-right">
+                                
+                                <div do-am-column-chart id="column-chart-rc-{{$index}}" class="column-chart" data-ng-model="group.ProductGroup[3]"  data-is-visible="{{group.IsVisible}}"  ></div>
+                                
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                </div>
+                </div>
+
+            </div>
+
+        </div>
+
+ </div>    
+
+    <div class="row">
+        <div class="col-lg-12" style="text-align:center">         
+            <a class="group-pager group-pager-{{group.IsVisible}}" data-ng-repeat="group in productsInfo.Groups" href="" data-ng-click="scrollToGroup($index)">
+                {{$index + 1}}
+            </a>
+        </div>
+    </div>
+
+    <!--<div class="row">
+            <div class="col-lg-12">
+                <div class="box box-solid">
+
+                    <div class="box-header">
+                        <h3 class="box-title">Environments</h3>
+                    </div>
+
+                    <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr class="active">
+                                    <th></th>
+                                    <th class="env-normal">Metric</th>
+                                    <th colspan="2" class="env-normal text-align-center">Dev</th>
+                                    <th colspan="2" class="env-normal text-align-center">QA</th>
+                                    <th colspan="2" class="env-normal text-align-center">Production</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td class="env-normal">Overall</td>
+                                    <td colspan="2" class="text-align-center" ><span class="badge bg-{{productsInfo.Environments[0].Overall}}">&nbsp;</span> <span class="env-highlight-{{productsInfo.Environments[0].Overall}}"> </span></td>
+                                    <td colspan="2" class="text-align-center"><span class="badge bg-{{productsInfo.Environments[1].Overall}}">&nbsp;</span> <span class="env-highlight-{{productsInfo.Environments[1].Overall}}"> </span></td>
+                                    <td colspan="2" class="text-align-center"><span class="badge bg-{{productsInfo.Environments[2].Overall}}">&nbsp;</span> <span class="fg-{{productsInfo.Environments[1].Overall}}"> </span> </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="env-normal">Dynatrace Response</td>
+                                    <td>
+                                        <div class="more-info"> Exceeding Threshold limit </div>
+                                        <span class="badge bg-{{productsInfo.Environments[0].ExceedThresholdLimitStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[0].ExceedThresholdLimitStatus}}"> {{productsInfo.Environments[0].ExceedThresholdLimit}} Transactions </span>
+                                    </td>
+									<td>
+									<div class="more-info"> Average Response Time </div>
+                                        <span class="badge bg-{{productsInfo.Environments[0].AverageResponseTimeStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[0].AverageResponseTimeStatus}}">{{productsInfo.Environments[0].AverageResponseTime}} ms </span>
+                                    </td>
+                                    <td>
+                                        <div class="more-info"> Exceeding Threshold limit </div>
+                                        <span class="badge bg-{{productsInfo.Environments[1].ExceedThresholdLimitStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[1].ExceedThresholdLimitStatus}}"> {{productsInfo.Environments[1].ExceedThresholdLimit}} Transactions </span>
+                                    </td>
+									<td>
+									<div class="more-info"> Average Response Time </div>
+                                        <span class="badge bg-{{productsInfo.Environments[1].AverageResponseTimeStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[1].AverageResponseTimeStatus}}">{{productsInfo.Environments[1].AverageResponseTime}} ms </span>									
+									</td>
+										
+                                    <td>
+                                        <div class="more-info"> Exceeding Threshold limit </div>
+                                        <span class="badge bg-{{productsInfo.Environments[2].ExceedThresholdLimitStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[2].ExceedThresholdLimitStatus}}"> {{productsInfo.Environments[2].ExceedThresholdLimit}} Transactions </span>
+                                    </td>
+									<td>
+									<div class="more-info"> Average Response Time </div>
+                                        <span class="badge bg-{{productsInfo.Environments[2].AverageResponseTimeStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[2].AverageResponseTimeStatus}}">{{productsInfo.Environments[2].AverageResponseTime}} ms </span>																		
+									</td>										
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="env-normal">Dynatrace Status</td>
+                                    <td>
+									<div class="more-info">Failed Transaction Count</div>
+                                        <span class="badge bg-{{productsInfo.Environments[0].FailedTransactionCountStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[0].FailedTransactionCountStatus}}"> {{productsInfo.Environments[0].FailedTransactionCount}} Transactions </span>
+									<td>
+									<div class="more-info">Failed Transaction %</div>
+                                        <span class="badge bg-{{productsInfo.Environments[0].FailedTransactionPercentStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[0].FailedTransactionPercentStatus}}"> {{productsInfo.Environments[0].FailedTransactionPercent}} % </span>
+                                    </td>
+                                    <td>
+									<div class="more-info">Failed Transaction Count</div>
+                                        <span class="badge bg-{{productsInfo.Environments[1].FailedTransactionCountStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[1].FailedTransactionCountStatus}}"> {{productsInfo.Environments[1].FailedTransactionCount}} Transactions </span>
+                                    </td>  
+									<td>
+									<div class="more-info">Failed Transaction %</div>
+                                        <span class="badge bg-{{productsInfo.Environments[1].FailedTransactionPercentStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[1].FailedTransactionPercentStatus}}"> {{productsInfo.Environments[1].FailedTransactionPercent}} % </span>                                        
+									</td>									
+                                    <td>
+									<div class="more-info">Failed Transaction Count</div>
+                                        <span class="badge bg-{{productsInfo.Environments[2].FailedTransactionCountStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[2].FailedTransactionCountStatus}}"> {{productsInfo.Environments[2].FailedTransactionCount}} Transactions </span>									
+                                    </td>
+									<td>
+									<div class="more-info">Failed Transaction %</div>
+                                        <span class="badge bg-{{productsInfo.Environments[2].FailedTransactionPercentStatus}}">&nbsp;</span>
+                                        <span class="fg-{{productsInfo.Environments[2].FailedTransactionPercentStatus}}"> {{productsInfo.Environments[2].FailedTransactionPercent}} % </span>                                        									
+									</td>
+                                </tr>
+                                <tr>
+                                    <td ></td>
+                                    <td class="env-normal">No. Of Defects</td>
+                                    <td colspan="2" class="text-align-center"><span class="badge bg-GRAY">&nbsp;</span> <span class="fg-GRAY"> {{productsInfo.Environments[0].NumberOfDefects}} </span> </td>
+                                    <td colspan="2" class="text-align-center"><span class="badge bg-GRAY">&nbsp;</span> <span class="fg-GRAY"> {{productsInfo.Environments[1].NumberOfDefects}} </span></td>
+                                    <td colspan="2" class="text-align-center"><span class="badge bg-GRAY">&nbsp;</span> <span class="fg-GRAY"> {{productsInfo.Environments[2].NumberOfDefects}} </span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    </div>
+                
+                </div>
+            
+            </div>
+        </div>-->
+    
+</div>

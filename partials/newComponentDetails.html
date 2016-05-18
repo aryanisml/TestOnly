@@ -1,0 +1,241 @@
+﻿<div>
+    <div class="row">
+        <div class="colg-lg-12" style="padding:5px; margin-left:5px;">
+
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#/dashboard">
+                        <i class="fa fa-home"> </i> Home
+                    </a>
+                </li>
+                <li><a data-ng-href="#/summary/{{componentDetails.GroupName}}">{{componentDetails.GroupName}}</a></li>
+                <li class="active">{{componentDetails.ComponentName}}</li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="box box-solid bg-black">
+                <div class="box-header">
+                    <h3 class="box-title">Code Quality - {{componentDetails.CodeQualityTrend[componentDetails.CodeQualityTrend.length - 1].MetricValue | number : 0}}%</h3>
+                </div>
+                <div class="box-body border-radius-none">
+                    <div do-line-with-color-chart id="lineCodeQuality" class="line-chart" data-ng-model="componentDetails.CodeQualityTrend"></div>
+
+                </div>
+                <div class="box-footer no-border text-normal">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div><span class="unit-box-footer-number"> {{componentDetails.ToxicFileCount !== null ? componentDetails.ToxicFileCount : 0}} </span>  toxic files</div>
+                            <div>
+                                <a href="" data-ng-click="fileWithToxicity = !fileWithToxicity">Files with highest toxicity</a>
+                                <div data-ng-show="fileWithToxicity">
+                                    <div class="more-info" data-ng-repeat="toxicFile in componentDetails.ToxicFiles">
+                                        {{toxicFile}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <a data-ng-href="{{componentDetails.RuleViolationsLinkToLogFile}}" target="_blank"> {{componentDetails.RuleViolations}} rule violations</a>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <a data-ng-if="componentDetails.CodeQualityLinkToLogFile !== null" data-ng-href="{{componentDetails.CodeQualityLinkToLogFile}}" target="_blank" class="pull-right">View detail log</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="box box-solid bg-black">
+                <div class="box-header">
+                    <h3 class="box-title">Unit Testing - {{componentDetails.UnitTestingTrend[componentDetails.UnitTestingTrend.length - 1].MetricValue | number : 0}}%</h3>
+                </div>
+                <div class="box-body border-radius-none">
+                    <div do-line-with-color-chart id="lineUnitTesting" class="line-chart" data-ng-model="componentDetails.UnitTestingTrend"></div>
+                </div>
+                <div class="box-footer no-border text-normal">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div><span class="unit-box-footer-number"> {{componentDetails.TotalUnitTestCount}} </span> Tests </div>
+                            <div><span class="unit-box-footer-number"> {{componentDetails.UnitTestPassed}} </span> Passed </div>
+                            <div><span class="unit-box-footer-number">{{componentDetails.UnitTestSuccessPercent | number : 0}}%</span> successful </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <a data-ng-if="componentDetails.UnitTestLinkToLogFile !== null" data-ng-href="{{componentDetails.UnitTestLinkToLogFile}}" target="_blank" class="pull-right">View detail log</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="box box-solid bg-black">
+                <div class="box-header">
+                    <h3 class="box-title">Code Coverage - {{componentDetails.CodeCoverageTrend[componentDetails.CodeCoverageTrend.length - 1].MetricValue | number : 0 }}%</h3>
+                </div>
+                <div class="box-body border-radius-none">
+                    <div do-line-with-color-chart id="lineCodeCoverage" class="line-chart" data-ng-model="componentDetails.CodeCoverageTrend"></div>
+
+                </div>
+                <div class="box-footer no-border text-normal">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div data-ng-if="componentDetails.StatementCoverage !== null && componentDetails.StatementCoverage >= 0 ">
+                                <span class="unit-box-footer-number">{{componentDetails.StatementCoverage | number : 0}}%</span> Statement coverage
+                            </div>
+                            <div data-ng-if="componentDetails.LineCoverage !== null && componentDetails.LineCoverage >= 0">
+                                <span class="unit-box-footer-number">{{componentDetails.LineCoverage | number : 0}}%</span> Line coverage
+                            </div>
+                            <div data-ng-if="componentDetails.BlockCoverage !== null && componentDetails.BlockCoverage >= 0">
+                                <span class="unit-box-footer-number">{{componentDetails.BlockCoverage | number : 0}}%</span> Block coverage
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <a data-ng-if="componentDetails.CodeCoverageLinkToLogFile !== null" data-ng-href="{{componentDetails.CodeCoverageLinkToLogFile}}" target="_blank" class="pull-right">View detail log</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="box box-solid bg-{{componentDetails.DevDeploymentTrend[0].Status}} fg-WHITE">
+                <div class="box-header">
+                    <h3 class="box-title">Deployment - Dev</h3>
+                </div>
+                <div class="box-body">
+                    <div>
+                        BuildDate : {{componentDetails.DevDeploymentTrend[0].BuildDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                    </div>
+                    <div>
+                        Build Version : {{componentDetails.DevDeploymentTrend[0].BuildVersion}}
+                    </div>
+                    <div>
+                        Deploy Date : {{componentDetails.DevDeploymentTrend[0].DeploymentDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                    </div>
+                    <div>
+                        Deploy Version : {{componentDetails.DevDeploymentTrend[0].DeploymentVersion}}
+                    </div>
+                    <div style="text-align:end">
+                        <a style="color:white" href="" data-ng-click="devViewMore = !devViewMore">{{devViewMore ? 'View less' : 'View more'}}</a>
+
+                    </div>
+                    <div data-ng-show="devViewMore">
+                        <div data-ng-repeat="deploymentTrend in componentDetails.DevDeploymentTrend track by $index">
+                            <div data-ng-show="$index > 0">
+                                <hr />
+                                <div>
+                                    BuildDate : {{deploymentTrend.BuildDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                                </div>
+                                <div>
+                                    Build Version : {{deploymentTrend.BuildVersion}}
+                                </div>
+                                <div>
+                                    Deploy Date : {{deploymentTrend.DeploymentDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                                </div>
+                                <div>
+                                    Deploy Version : {{deploymentTrend.DeploymentVersion}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="box box-solid bg-{{componentDetails.QaDeploymentTrend[0].Status}} fg-WHITE">
+                <div class="box-header">
+                    <h3 class="box-title">Deployment - QA</h3>
+                </div>
+                <div class="box-body">
+                    <div>
+                        BuildDate : {{componentDetails.QaDeploymentTrend[0].BuildDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                    </div>
+                    <div>
+                        Build Version : {{componentDetails.QaDeploymentTrend[0].BuildVersion}}
+                    </div>
+                    <div>
+                        Deploy Date : {{componentDetails.QaDeploymentTrend[0].DeploymentDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                    </div>
+                    <div>
+                        Deploy Version : {{componentDetails.QaDeploymentTrend[0].DeploymentVersion}}
+                    </div>
+
+                    <div style="text-align:end">
+                        <a style="color:white" href="" data-ng-click="qaViewMore = !qaViewMore">{{qaViewMore ? 'View less' : 'View more'}}</a>
+
+                    </div>
+                    <div data-ng-show="qaViewMore">
+                        <div data-ng-repeat="deploymentTrend in componentDetails.QaDeploymentTrend" data-ng-if="$index > 0">
+                            <hr />
+                            <div>
+                                BuildDate : {{deploymentTrend.BuildDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                            </div>
+                            <div>
+                                Build Version : {{deploymentTrend.BuildVersion}}
+                            </div>
+                            <div>
+                                Deploy Date : {{deploymentTrend.DeploymentDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                            </div>
+                            <div>
+                                Deploy Version : {{deploymentTrend.DeploymentVersion}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="box box-solid bg-{{componentDetails.ProdDeploymentTrend[0].Status}} fg-WHITE">
+                <div class="box-header">
+                    <h3 class="box-title">Deployment - Production</h3>
+                </div>
+
+                <div class="box-body">
+                    <div>
+                        BuildDate : {{componentDetails.ProdDeploymentTrend[0].BuildDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                    </div>
+                    <div>
+                        Build Version : {{componentDetails.ProdDeploymentTrend[0].BuildVersion}}
+                    </div>
+                    <div>
+                        Deploy Date : {{componentDetails.ProdDeploymentTrend[0].DeploymentDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                    </div>
+                    <div>
+                        Deploy Version : {{componentDetails.ProdDeploymentTrend[0].DeploymentVersion}}
+                    </div>
+
+                    <div style="text-align:end">
+                        <a style="color:white" href="" data-ng-click="prodViewMore = !prodViewMore">{{prodViewMore ? 'View less' : 'View more'}}</a>
+
+                    </div>
+                    <div data-ng-show="prodViewMore">
+                        <div data-ng-repeat="deploymentTrend in componentDetails.ProdDeploymentTrend" data-ng-if="$index > 0">
+                            <hr />
+                            <div>
+                                BuildDate : {{deploymentTrend.BuildDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                            </div>
+                            <div>
+                                Build Version : {{deploymentTrend.BuildVersion}}
+                            </div>
+                            <div>
+                                Deploy Date : {{deploymentTrend.DeploymentDateTime | date : 'yyyy-MM-dd HH:mm:ss a'}}
+                            </div>
+                            <div>
+                                Deploy Version : {{deploymentTrend.DeploymentVersion}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

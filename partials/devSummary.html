@@ -1,0 +1,217 @@
+﻿<div id="devSummary">
+    <div class="row">
+        <div class="col-lg-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>
+                            <span style="font-weight:bold">{{group.Name}} </span>
+                        </td>
+                        <td colspan="2"
+                            class="overall-status overall-status-{{group.OverallStatus}}"> {{group.Overall | number : 0}}%
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Code Quality
+                                <div class="more-info">% files under toxicity limit</div>
+                        </td>
+                        <td colspan="2" class="overall-status overall-status-{{group.CodeQualityStatus}}">{{group.CodeQuality | number : 0}}% 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Unit Testing
+                                <div class="more-info">% passed</div>
+                        </td>
+                        <td colspan="2" class="overall-status overall-status-{{group.UnitTestingStatus}}">{{group.UnitTesting | number : 0}}% 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Code Coverage
+                                <div class="more-info">% lines covered</div>
+                        </td>
+                        <td colspan="2" class="overall-status overall-status-{{group.CodeCoverageStatus}}">{{group.CodeCoverage | number : 0}}% 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Deploy - Dev
+                                <div class="more-info">% successful deployment</div>
+                        </td>
+                        <td colspan="2" class="overall-status overall-status-{{group.Deploy.DevStatus}}">{{group.Deploy.Dev | number : 0}}% 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Deploy - QA
+                                <div class="more-info">% successful deployment</div>
+                        </td>
+                        <td colspan="2" class="overall-status overall-status-{{group.Deploy.QAStatus}}">{{group.Deploy.QA | number : 0}}% 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Deploy - Prod
+                                <div class="more-info">% successful deployment</div>
+                        </td>
+                        <td colspan="2" class="overall-status overall-status-{{group.Deploy.ProductionStatus}}">{{group.Deploy.Production | number : 0}}% 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Automation Testing - Dev
+                                <div class="more-info">% passed</div>
+                        </td>
+                        <td colspan="2" class="overall-status overall-status-{{group.AutomatedTesting.DevStatus}}">{{group.AutomatedTesting.Dev  | number : 0}}% 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Automation Testing - QA
+                                <div class="more-info">% passed</div>
+                        </td>
+                        <td colspan="2" class="overall-status overall-status-{{group.AutomatedTesting.QAStatus}}">{{group.AutomatedTesting.QA | number : 0}}% 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Automation Testing - Prod
+                                <div class="more-info">(% passed)</div>
+                        </td>
+                        <td colspan="2" class="overall-status overall-status-{{group.AutomatedTesting.ProductionStatus}}">{{group.AutomatedTesting.Production | number : 0}}% 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Monitoring - Prod
+                                <div class="more-info">overall performance</div>
+                        </td>
+                        <td colspan="2" class="overall-status overall-status-{{group.Monitor.Production}}">{{group.Monitor.Production | number : 0}}% 
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div  id="componentTable"  class="col-lg-9">
+        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td class="header-name">Application</td>
+                        <td class="header-build">Code Quality
+                            <div class="more-info">(% files under toxicity limit)</div>
+                        </td>
+                        <td class="header-build">Unit Testing
+                            <div class="more-info">(% passed)</div>
+                        </td>
+                        <td class="header-build">Code Coverage
+                            <div class="more-info">(% lines covered)</div>
+                        </td>
+                        <td class="header-deploy">Deploy - Dev
+                            <div class="more-info">(deployment status)</div>
+                        </td>
+                        <td class="header-deploy">Deploy - QA
+                            <div class="more-info">(deployment status)</div>
+                        </td>
+                        <td class="header-deploy">Deploy - Prod
+                            <div class="more-info">(deployment status)</div>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="component in group.Components">
+                        <td class="info-name">
+                            <span><a data-ng-href="#/{{group.Name}}/component/{{component.Name}}">{{ component.Name }}</a></span>
+                        </td>
+                        <td class="info-build">
+                            <a data-ng-href="{{component.CodeQualityLinkToLogFile}}" target="_blank" tooltip-placement="top" tooltip="0-79 (Red), 80-89 (Yellow), 90-100 (Green)" tooltip-class="customTooltip-{{component.CodeQualityStatus }}">
+
+                                <div class="component-status component-status-{{ component.CodeQualityStatus }}">
+                                    {{component.CodeQuality | number : 0}}%
+                                </div>
+                             </a>
+                        </td>
+                        <td class="info-build">
+                                <div class="component-status component-status-{{ component.UnitTestingStatus }}">
+                                    {{component.UnitTesting | number : 0}}%
+                                </div>
+
+                        </td>
+                        <td class="info-build">
+                                <div class="component-status component-status-{{ component.CodeCoverageStatus }}">
+                                    {{component.CodeCoverage | number : 0}}%
+                                </div>
+                        </td>
+                        <td class="info-deploy">
+                            <i class="fa fa-flag flag flag-{{component.Deploy.DevStatus}}"></i>
+
+                        </td>
+                        <td class="info-deploy">
+                            <i class="fa fa-flag flag flag-{{component.Deploy.QAStatus}}"></i>
+
+                        </td>
+                        <td class="info-deploy">
+                            <i class="fa fa-flag flag flag-{{component.Deploy.ProductionStatus}}"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br />
+
+               <table class="table">
+
+                <thead>
+                    <tr>
+                        <td class="header-name">
+                            Project
+                        </td>
+                        <td class="header-deploy">
+                            Auto. Testing - Dev
+                            <div class="more-info">% successful deployment</div>
+                        </td>
+                        <td class="header-deploy">
+                            Auto. Testing - QA
+                            <div class="more-info">% successful deployment</div>
+                        </td>
+                        <td class="header-deploy">
+                            Auto. Testing - Prod
+                            <div class="more-info">% successful deployment</div>
+                        </td>
+                        <td class="header-build">
+                            Monitoring - Prod
+                            <div class="more-info">(overall performance)</div>
+                        </td>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr data-ng-repeat="project in group.Projects">
+                       <td  class="info-name" style="text-align:left"> {{project.Name}} </td>
+                        <td class="info-deploy">
+                                <div class="component-status component-status-{{project.autoTesting.DevStatus}}">
+                                    {{project.autoTesting.Dev | number : 0}}%
+                                </div>
+                        </td>
+                        <td class="info-deploy">
+                                <div class="component-status component-status-{{project.autoTesting.QAStatus}}">
+                                    {{project.autoTesting.QA | number : 0}}%
+                                </div>
+                        </td>
+                        <td class="info-deploy">
+                                <div class="component-status component-status-{{project.autoTesting.ProductionStatus}}">
+                                    {{project.autoTesting.Production | number : 0}}%
+                                </div>
+                        </td>
+                        <td class="info-build">
+                                <div class="component-status component-status-{{project.monitor.ProductionStatus}}">
+                                    {{project.monitor.Production | number : 0}}%
+                                </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12"></div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿<div ng-app="myApp" ng-controller="thresholdController">
+    <h3>SEF Measure Threshold Summary</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>
+                    Measrue Name
+                </td>
+                <td>
+                    Technology
+                </td>
+                <td>
+                    Min
+                </td>
+                <td>
+                    Max
+                </td>
+                <td>
+                    Description
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat ="tab in value">
+                <td>{{tab.MeasureName}}</td>
+                <td>{{tab.Technology}}</td>
+                <td>{{tab.Min}}</td>
+                <td>{{tab.Max}}</td>
+                <td>{{tab.Description}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
